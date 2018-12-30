@@ -1,0 +1,26 @@
+{
+  "name": "resume_builder",
+  "version": "1.0.0",
+  "description": " A web app that enables users to easily create resume by entering their personal information in just one click.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AARSTAR65/resume_builder.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "aarstar65",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AARSTAR65/resume_builder/issues"
+  },
+  "homepage": "https://github.com/AARSTAR65/resume_builder#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10"
+  }
+}
