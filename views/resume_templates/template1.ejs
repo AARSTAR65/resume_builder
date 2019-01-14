@@ -1,0 +1,21 @@
+<!-- views/resume_templates/template1.ejs -->
+<% include ../partials/head %>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+            <li><a><span class="glyphicon glyphicon-user"></span> <%= user.fName %> <%= user.lName %></a></li>
+            <li><a><span class="glyphicon glyphicon-send"></span> <%= user.address %></a></li>
+            <li><a><span class="glyphicon glyphicon-envelope"></span> <%= user.email %></a></li>
+            <li><a><span class="glyphicon glyphicon-earphone"></span> <%= user.phone %></a></li>
+        </ul>
+    </div>
+</nav>
+<center><div class="card card-container">
+        <span class="glyphicon glyphicon-file"> </span> <%= user.description %>
+    </div></center>
+    <center><div class="card card-container">
+            <span class="glyphicon glyphicon-education"> </span> <%= user.education %>
+        </div></center>
+        <center><div class="card card-container">
+                <span class="glyphicon glyphicon-ok"> </span> <%= user.skills %>
+            </div></center>

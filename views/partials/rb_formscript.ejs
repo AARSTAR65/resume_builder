@@ -1,0 +1,16 @@
+<!-- public/partials/rb_formscript.ejs -->
+<script>
+    function addField() {
+        var field = document.createElement("input");
+        var att = document.createAttribute("class");
+        att.value = "form-control";
+        field.setAttributeNode(att);
+        var btt = document.createAttribute("plaeholder");
+        btt.value = "Skill";
+        field.setAttributeNode(btt);
+        var ctt = document.createAttribute("name");
+        ctt.value = "inputSkill";
+        field.setAttributeNode(ctt);
+        document.getElementById("Skill").appendChild(field);
+    }
+</script>

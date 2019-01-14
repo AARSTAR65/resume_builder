@@ -1,0 +1,39 @@
+<!-- public/partials/rsumebuild-c.ejs -->
+<div class="container">
+    <div class="card card-container">
+        <h2>Resume Builder...</h2>
+        <h4>Please fill in the details...</h4>
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" action="/generate" method="post">
+            <span id="reauth-email" class="reauth-email"></span>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" id="fName" class="form-control" placeholder="First Name" name="fName" required
+                        autofocus>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="lName" class="form-control" placeholder="Last Name" name="lName" required>
+                </div>
+            </div>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" id="inputaddr" class="form-control" placeholder="Address" name="address"
+                        required>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="inputUsr" class="form-control" placeholder="Phone No." name="phone" required>
+                </div>
+            </div>
+            <input type="text" id="inputDesc" class="form-control" placeholder="Description" name="description"
+                required>
+            <input type="text" id="inputEdu" class="form-control" placeholder="Education" name="education" required>
+            <div id="Skill">
+                <input type="text" id="inputSkill" class="form-control" placeholder="Skills" name="skills" required>
+            </div>
+            <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addField()">Add Skill</button>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Generate Resume</button>
+        </form>
+    </div>
+</div>

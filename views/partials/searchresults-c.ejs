@@ -1,0 +1,13 @@
+<ul class="list-group">
+    <% users.forEach(function(user) { %>
+    <h4>
+        <a href="#" class="list-group-item">
+            <%= user.fName %>
+            <%= user.lName %> |
+            <%= user.username %> |
+            <%= user.email %>
+            <font color="red"><%= user.err %></font>
+        </a>
+    </h4>
+    <% }); %>
+</ul>
