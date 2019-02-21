@@ -1,11 +1,12 @@
 <!-- public/partials/rsumebuild-c.ejs -->
 <div class="container">
-    <div class="card card-container">
-        <h2>Resume Builder...</h2>
-        <h4>Please fill in the details...</h4>
-        <p id="profile-name" class="profile-name-card"></p>
-        <form class="form-signin" action="/generate" method="post">
-            <span id="reauth-email" class="reauth-email"></span>
+    <h2>Resume Builder...</h2>
+    <h4>Please fill in the details...</h4>
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin" action="/generate" method="post">
+        <span id="reauth-email" class="reauth-email"></span>
+        <div class="card card-container">
+            <h3><span class="glyphicon glyphicon-earphone"></span> Contact Information...</h3>
             <div class="row">
                 <div class="col-sm-6">
                     <input type="text" id="fName" class="form-control" placeholder="First Name" name="fName" required
@@ -16,7 +17,6 @@
                 </div>
             </div>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
-
             <div class="row">
                 <div class="col-sm-6">
                     <input type="text" id="inputaddr" class="form-control" placeholder="Address" name="address"
@@ -26,14 +26,29 @@
                     <input type="text" id="inputUsr" class="form-control" placeholder="Phone No." name="phone" required>
                 </div>
             </div>
+        </div>
+        <div class="card card-container">
+            <h3><span class="glyphicon glyphicon-file"></span> Description...</h3>
             <input type="text" id="inputDesc" class="form-control" placeholder="Description" name="description"
                 required>
-            <input type="text" id="inputEdu" class="form-control" placeholder="Education" name="education" required>
+        </div>
+        <div class="card card-container">
+            <h3><span class="glyphicon glyphicon-education"></span> Education...</h3>
+            <div id="Edu">
+                <input type="text" id="inputEdu" class="form-control" placeholder="Education" name="education" required>
+            </div>
+            <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addEdu()">Add Skill</button>
+        </div>
+        <div class="card card-container">
+            <h3><span class="glyphicon glyphicon-ok"></span> Skills...</h3>
             <div id="Skill">
                 <input type="text" id="inputSkill" class="form-control" placeholder="Skills" name="skills" required>
             </div>
-            <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addField()">Add Skill</button>
+            <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addSkill()">Add Skill</button>
+        </div>
+        <div class="card card-container">
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Generate Resume</button>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>"button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addField()">Add Skill</button>
 </div>

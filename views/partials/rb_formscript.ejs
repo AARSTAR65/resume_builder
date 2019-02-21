@@ -1,6 +1,6 @@
 <!-- public/partials/rb_formscript.ejs -->
 <script>
-    function addField() {
+    function addSkill() {
         var field = document.createElement("input");
         var att = document.createAttribute("class");
         att.value = "form-control";
@@ -9,8 +9,21 @@
         btt.value = "Skill";
         field.setAttributeNode(btt);
         var ctt = document.createAttribute("name");
-        ctt.value = "inputSkill";
+        ctt.value = "skills";
         field.setAttributeNode(ctt);
         document.getElementById("Skill").appendChild(field);
+    }
+    function addEdu() {
+        var field = document.createElement("input");
+        var att = document.createAttribute("class");
+        att.value = "form-control";
+        field.setAttributeNode(att);
+        var btt = document.createAttribute("plaeholder");
+        btt.value = "Education";
+        field.setAttributeNode(btt);
+        var ctt = document.createAttribute("name");
+        ctt.value = "education";
+        field.setAttributeNode(ctt);
+        document.getElementById("Edu").appendChild(field);
     }
 </script>

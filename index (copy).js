@@ -18,11 +18,6 @@ app.use(session({
    secret: "I am Ironman..."
 }))
 app.set('view engine', 'ejs');
-var dbo;
-MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
-   if (err) throw err;
-   dbo = db.db("rbudb");
-});
 app.get('/', function (req, res) {
    res.render('public/index', {
       LoggedIn: req.session.LoggedIn,
@@ -112,79 +107,87 @@ app.get('/dashboard.html', function (req, res) {
 });
 
 app.post('/signup', function (req, res) {
-   bcrypt.genSalt(saltRounds, function (err, salt) {
-      bcrypt.hash(req.body.password, salt, function (err, hash) {
-         var myobj = { username: req.body.username, fName: req.body.fName, lName: req.body.lName, email: req.body.email, password: hash };
-         dbo.collection("users").insertOne(myobj, function (err, res) {
-            if (err) throw err;
-            console.log("1 document inserted");
+   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("rbudb");
+      bcrypt.genSalt(saltRounds, function (err, salt) {
+         bcrypt.hash(req.body.password, salt, function (err, hash) {
+            var myobj = { username: req.body.username, fName: req.body.fName, lName: req.body.lName, email: req.body.email, password: hash };
+            dbo.collection("users").insertOne(myobj, function (err, res) {
+               if (err) throw err;
+               console.log("1 document inserted");
+               db.close();
+            });
          });
       });
    });
 });
 
 app.post('/search', function (req, res) {
-   var query = { username: req.body.searchterm };
-   dbo.collection("users").find(query).toArray(function (err, result) {
+   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) throw err;
-      res.render('public/search', {
-         users: result,
-         searchterm: req.body.searchterm,
-         user: req.session.user,
-         LoggedIn: req.session.LoggedIn
+      var dbo = db.db("rbudb");
+      var query = { username: req.body.searchterm };
+      dbo.collection("users").find(query).toArray(function (err, result) {
+         if (err) throw err;
+         res.render('public/search', {
+            users: result,
+            searchterm: req.body.searchterm,
+            user: req.session.user,
+            LoggedIn: req.session.LoggedIn
+         });
+         console.log(result);
+         db.close();
       });
-      console.log(result);
    });
 });
 
 app.post('/login', function (req, res) {
-   var query = { email: req.body.email };
-   console.log(req.body.email);
-   dbo.collection("users").find(query).toArray(function (err, result) {
+   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       if (err) throw err;
-      if (result.length == 0) {
-         res.render('public/login', {
-            err: 1,
-            LoggedIn: req.session.LoggedIn
-         });
-      }
-      else {
-         bcrypt.compare(req.body.password, result[0].password, function (err, matched) {
-            if (err) throw err;
-            if (matched) {
-               req.session.LoggedIn = true;
-               req.session.user = result[0];
-               if (req.body.remember) {
+      var dbo = db.db("rbudb");
+      var query = { email: req.body.email };
+      console.log(req.body.email);
+      dbo.collection("users").find(query).toArray(function (err, result) {
+         if (err) throw err;
+         if (result.length == 0) {
+            res.render('public/login', {
+               err: 1,
+               LoggedIn: req.session.LoggedIn
+            });
+         }
+         else {
+            bcrypt.compare(req.body.password, result[0].password, function (err, matched) {
+               if (err) throw err;
+               if (matched) {
+                  req.session.LoggedIn = true;
+                  req.session.user = result[0];
+                  if (req.body.remember) {
 
+                  }
+                  else {
+                     req.session.cookie.maxage = 300000;
+                  }
+                  console.log(req.session.user);
+                  res.redirect('/dashboard.html')
                }
                else {
-                  req.session.cookie.maxage = 300000;
+                  res.render('public/login', {
+                     err: 1,
+                     LoggedIn: req.session.LoggedIn
+                  });
                }
-               console.log(req.session.user);
-               res.redirect('/dashboard.html')
-            }
-            else {
-               res.render('public/login', {
-                  err: 1,
-                  LoggedIn: req.session.LoggedIn
-               });
-            }
-         });
-      }
+            });
+         }
+         db.close();
+      });
    });
 });
 
 app.post('/generate', function (req, res) {
-   var myobj = { username: req.session.user.username, resume_data: req.body};
-   dbo.collection("users").insertOne(myobj, function (err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-   });
    res.render('resume_templates/template1', {
       user: req.body
    });
-
-   console.log(req.body);
    console.log("Ae mubaarak ho Bro!!! \nYe waala b chl pda!!! ");
 });
 
