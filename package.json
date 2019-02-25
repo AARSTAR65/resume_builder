@@ -4,7 +4,7 @@
   "description": " A web app that enables users to easily create resume by entering their personal information in just one click.",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,16 +20,13 @@
   },
   "homepage": "https://github.com/AARSTAR65/resume_builder#readme",
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "mongodb": "^3.1.10",
+    "mongodb": "^3.1.13",
     "start": "^5.1.0"
-  },
-  "scripts": {
-    "start": "node index.js"
   }
 }
