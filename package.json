@@ -19,7 +19,7 @@
     "url": "https://github.com/AARSTAR65/resume_builder/issues"
   },
   "engines": { 
-    "node": "8.9.4" 
+    "node": "8.1.2" 
  },
   "homepage": "https://github.com/AARSTAR65/resume_builder#readme",
   "dependencies": {
