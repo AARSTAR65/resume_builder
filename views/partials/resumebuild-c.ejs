@@ -1,54 +1,119 @@
 <!-- public/partials/rsumebuild-c.ejs -->
 <div class="container">
-    <h2>Resume Builder...</h2>
-    <h4>Please fill in the details...</h4>
+    <div class="transbox">
+        <center>
+            <p>
+                <h2>Resume Builder...</h2>
+                <h4>Please fill in the details...</h4>
+            </p>
+        </center>
+    </div>
     <p id="profile-name" class="profile-name-card"></p>
-    <form class="form-signin" action="/generate" method="post">
-        <span id="reauth-email" class="reauth-email"></span>
-        <div class="card card-container">
-            <h3><span class="glyphicon glyphicon-earphone"></span> Contact Information...</h3>
+    <div class="transcont">
+        <form class="form-signin" action="/generate" method="post" id="userdata">
+            <span id="reauth-email" class="reauth-email"></span>
             <div class="row">
-                <div class="col-sm-6">
-                    <input type="text" id="fName" class="form-control" placeholder="First Name" name="fName" required
-                        autofocus>
+                <div class="col-sm-4">
+                    <div class="zoom">
+                        <div class="card card-container-b">Contact Information <i onclick="shcontact(this)"
+                                class="glyphicon glyphicon-plus-sign" style="float: right"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <input type="text" id="lName" class="form-control" placeholder="Last Name" name="lName" required>
+                <div class="col-sm-8">
+                    <div class="card card-container" id="contact" style="display: none;">
+                        <h3><span class="glyphicon glyphicon-earphone"></span> Contact Information...</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" id="fName" class="form-control" placeholder="First Name" name="fName"
+                                    required autofocus>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" id="lName" class="form-control" placeholder="Last Name" name="lName"
+                                    required>
+                            </div>
+                        </div>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                            name="email" required>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" id="inputaddr" class="form-control" placeholder="Address"
+                                    name="address" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" id="inputUsr" class="form-control" placeholder="Phone No."
+                                    name="phone" required>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
             <div class="row">
-                <div class="col-sm-6">
-                    <input type="text" id="inputaddr" class="form-control" placeholder="Address" name="address"
-                        required>
+                <div class="col-sm-4">
+                    <div class="zoom">
+                        <div class="card card-container-b">Description <i onclick="shdescription(this)"
+                                class="glyphicon glyphicon-plus-sign" style="float: right"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <input type="text" id="inputUsr" class="form-control" placeholder="Phone No." name="phone" required>
+                <div class="col-sm-8">
+                    <div class="card card-container" id="description" style="display: none;">
+                        <h3><span class="glyphicon glyphicon-file"></span> Description...</h3>
+                        <textarea rows=4 class="form-control" placeholder="Description" name="description" form="userdata"
+                            required></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card card-container">
-            <h3><span class="glyphicon glyphicon-file"></span> Description...</h3>
-            <input type="text" id="inputDesc" class="form-control" placeholder="Description" name="description"
-                required>
-        </div>
-        <div class="card card-container">
-            <h3><span class="glyphicon glyphicon-education"></span> Education...</h3>
-            <div id="Edu">
-                <input type="text" id="inputEdu" class="form-control" placeholder="Education" name="education" required>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="zoom">
+                        <div class="card card-container-b">Education <i onclick="sheducation(this)"
+                                class="glyphicon glyphicon-plus-sign" style="float: right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card card-container" id="education"  style="display: none;">
+                        <h3><span class="glyphicon glyphicon-education"></span> Education...</h3>
+                        <div id="Edu">
+                            <input type="text" id="inputEdu" class="form-control" placeholder="Education"
+                                name="education" required>
+                            <input type="text" id="inputEdu" class="form-control" placeholder="Education"
+                                name="education">
+                            <input type="text" id="inputEdu" class="form-control" placeholder="Education"
+                                name="education">
+                        </div>
+                        <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addEdu()">Add
+                            Educational Qualification</button>
+                    </div>
+                </div>
             </div>
-            <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addEdu()">Add Skill</button>
-        </div>
-        <div class="card card-container">
-            <h3><span class="glyphicon glyphicon-ok"></span> Skills...</h3>
-            <div id="Skill">
-                <input type="text" id="inputSkill" class="form-control" placeholder="Skills" name="skills" required>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="zoom">
+                        <div class="card card-container-b">Skills <i onclick="shskills(this)"
+                                class="glyphicon glyphicon-plus-sign" style="float: right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card card-container" id="skills"  style="display: none;">
+                        <h3><span class="glyphicon glyphicon-ok"></span> Skills...</h3>
+                        <div id="Skill">
+                            <input type="text" id="inputSkill" class="form-control" placeholder="Skills" name="skills"
+                                required>
+                            <input type="text" id="inputSkill" class="form-control" placeholder="Skills" name="skills">
+                            <input type="text" id="inputSkill" class="form-control" placeholder="Skills" name="skills">
+                        </div>
+                        <button type="button" class="btn btn-lg btn-primary btn-block btn-signin"
+                            onclick="addSkill()">Add
+                            Skill</button>
+                    </div>
+                </div>
             </div>
-            <button type="button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addSkill()">Add Skill</button>
-        </div>
-        <div class="card card-container">
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Generate Resume</button>
-        </div>
-    </form>
-</div>"button" class="btn btn-lg btn-primary btn-block btn-signin" onclick="addField()">Add Skill</button>
+            <div class="card card-container">
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Generate Resume</button>
+            </div>
+        </form>
+    </div>
 </div>

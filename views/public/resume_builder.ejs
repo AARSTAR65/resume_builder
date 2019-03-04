@@ -6,11 +6,14 @@
     <% include ../partials/rb_formscript %>
 </head>
 
-<body>
+<body class="parallax" onload="hplane()">
     <header>
         <% include ../partials/header %>
     </header>
-    <% include ../partials/resumebuild-c %>
+    <div class="move" id="move"></div>
+    <div style="z-index:1;position:relative;">
+        <% include ../partials/resumebuild-c %>
+    </div>
 </body>
 
 </html>

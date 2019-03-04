@@ -5,11 +5,14 @@
     <% include ../partials/head %>
 </head>
 
-<body>
+<body class="parallax" onload="hplane()">
     <header>
         <% include ../partials/header %>
     </header>
-    <% include ../partials/resumetemp-c %>
+    <div class="move" id="move"></div>
+    <div style="z-index:1;position:relative;">
+        <% include ../partials/resumetemp-c %>
+    </div>
 </body>
 
 </html>

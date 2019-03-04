@@ -1,12 +1,16 @@
-<!-- public/partials/seach-c.ejs -->
+<!-- public/partials/myresume-c.ejs -->
 <div class="container">
+    <div class="transbox">
+        <center>
+            <p>
+                <h2>My Resume</h2>
+                <h4>Here you'll find any resume you've built...</h4>
+            </p>
+        </center>
+    </div>
     <div class="card card-container">
-        <h2>Search for "
-            <%= searchterm %>"</h2>
-        <%if (users.length==0) { %>
-            <% include ../partials/searcherr-c %>
-        <% } else { %>
-            <% include ../partials/searchresults-c %>
-        <% } %>
+        <div class="alert alert-warning">
+            You haven't built any resume yet.
+        </div>
     </div>
 </div>

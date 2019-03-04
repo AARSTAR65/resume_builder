@@ -5,7 +5,7 @@
         var att = document.createAttribute("class");
         att.value = "form-control";
         field.setAttributeNode(att);
-        var btt = document.createAttribute("plaeholder");
+        var btt = document.createAttribute("placeholder");
         btt.value = "Skill";
         field.setAttributeNode(btt);
         var ctt = document.createAttribute("name");
@@ -18,12 +18,48 @@
         var att = document.createAttribute("class");
         att.value = "form-control";
         field.setAttributeNode(att);
-        var btt = document.createAttribute("plaeholder");
+        var btt = document.createAttribute("placeholder");
         btt.value = "Education";
         field.setAttributeNode(btt);
         var ctt = document.createAttribute("name");
         ctt.value = "education";
         field.setAttributeNode(ctt);
         document.getElementById("Edu").appendChild(field);
+    }
+    function shcontact(y) {
+        var x = document.getElementById("contact");
+        y.classList.toggle("glyphicon-minus-sign");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+    function shdescription(y) {
+        var x = document.getElementById("description");
+        y.classList.toggle("glyphicon-minus-sign");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+    function sheducation(y) {
+        var x = document.getElementById("education");
+        y.classList.toggle("glyphicon-minus-sign");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+    function shskills(y) {
+        var x = document.getElementById("skills");
+        y.classList.toggle("glyphicon-minus-sign");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
 </script>

@@ -8,7 +8,7 @@ bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/rbudb";
 const saltRounds = 10;
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static('views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(session({
@@ -51,6 +51,32 @@ app.get('/signup.html', function (req, res) {
 app.get('/resumebuilder.html', function (req, res) {
    if (req.session.LoggedIn) {
       res.render('public/resume_builder', {
+         LoggedIn: req.session.LoggedIn,
+         user: req.session.user
+      });
+      console.log("Ae mubaarak ho Bro!!! \nYe waala b chl pda!!! ");
+   }
+   else {
+      res.redirect('/login.html');
+   }
+});
+
+app.get('/myresume.html', function (req, res) {
+   if (req.session.LoggedIn) {
+      res.render('public/myresume', {
+         LoggedIn: req.session.LoggedIn,
+         user: req.session.user
+      });
+      console.log("Ae mubaarak ho Bro!!! \nYe waala b chl pda!!! ");
+   }
+   else {
+      res.redirect('/login.html');
+   }
+});
+
+app.get('/settings.html', function (req, res) {
+   if (req.session.LoggedIn) {
+      res.render('public/settings', {
          LoggedIn: req.session.LoggedIn,
          user: req.session.user
       });

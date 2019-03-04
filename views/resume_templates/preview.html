@@ -1,21 +1,215 @@
 <head>
-    <meta charset="utf-8">
+<!-- views/partials/head.ejs -->
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .card-container.card {
+        max-width: 700px;
+        padding: 40px 40px;
+    }
+    .btn {
+        font-weight: 700;
+        height: 36px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+    }
+    .card {
+        background-color: #F7F7F7;
+        padding: 20px 25px 30px;
+        margin: 0 auto 25px;
+        margin-top: 50px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .profile-img-card {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 10px;
+        display: block;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+    .profile-name-card {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 0 0;
+        min-height: 1em;
+    }
+    .reauth-email {
+        display: block;
+        color: #404040;
+        line-height: 2;
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .form-signin #inputEmail,
+    .form-signin #inputPassword {
+        direction: ltr;
+        height: 44px;
+        font-size: 16px;
+    }
+    .form-signin input[type=email],
+    .form-signin input[type=password],
+    .form-signin input[type=text],
+    .form-signin button {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        z-index: 1;
+        position: relative;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .form-signin .form-control:focus {
+        border-color: rgb(104, 145, 162);
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    }
+    .btn.btn-signin {
+        background-color: rgb(104, 145, 162);
+        padding: 0px;
+        font-weight: 700;
+        font-size: 14px;
+        height: 36px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: none;
+        -o-transition: all 0.218s;
+        -moz-transition: all 0.218s;
+        -webkit-transition: all 0.218s;
+        transition: all 0.218s;
+    }
+    .btn.btn-signin:hover,
+    .btn.btn-signin:active,
+    .btn.btn-signin:focus {
+        background-color: rgb(12, 97, 33);
+    }
+    .forgot-password {
+        color: rgb(104, 145, 162);
+    }
+    .forgot-password:hover,
+    .forgot-password:active,
+    .forgot-password:focus{
+        color: rgb(12, 97, 33);
+    }
+        </style>
 </head>
-</head>
-<nav class="navbar navbar-inverse">
+<body style="background-image:url(BG1.jpg);">
+    <!-- views/partials/header.ejs -->
+<nav class="navbar navbar-inverse" style="border-radius: 0px;">
     <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a><span class="glyphicon glyphicon-user"></span> Aar Kay</a></li>
-            <li><a><span class="glyphicon glyphicon-send"></span> fghfghjdfgh</a></li>
-            <li><a><span class="glyphicon glyphicon-envelope"></span> asdf@fghjk.com</a></li>
-            <li><a><span class="glyphicon glyphicon-earphone"></span> 9876543210</a></li>
-        </ul>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Resume Builder</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="resumetemplates.html">Resume templates</a></li>
+                <li><a href="resumebuilder.html">Resume builder</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" action="/search" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="searchterm" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Go!</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <%if (LoggedIn) { %>
+                <% include ../partials/header-li %>
+                <% } else { %>
+                <% include ../partials/header-lo %>
+                <% } %>
+            </ul>
+        </div>
     </div>
 </nav>
-<center><div class="card card-container">
+    <!-- public/partials/login-c.ejs -->
+<div class="container" >
+    <div class="row">
+        <div class="col-sm-8" >
+            <div class="card card-container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img id="profile-img" align="left" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                    </div>
+                    <div class="col-sm-10">
+                        <h3>Build professionally appealing and user friendly resumes instantly with ease...</h3>
+                        <ul type="none">
+                            <li>
+                                <h4><span class="glyphicon glyphicon-ok-circle"></span> Effortless Crafting...</h4>
+                            </li>
+                            <li>
+                                <h4><span class="glyphicon glyphicon-ok-circle"></span> Real-time Preview...</h4>
+                            </li>
+                            <li>
+                                <h4><span class="glyphicon glyphicon-ok-circle"></span> Export resumes in the most
+                                    familiar, pdf file format...</h4>
+                            </li>
+                            <li>
+                                <h4><span class="glyphicon glyphicon-ok-circle"></span> Land your dream job with the
+                                    perfect resume employers &nbsp;&nbsp;&nbsp;&nbsp; are looking for!!!</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card card-container">
 
-</div></center>
+                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                <p id="profile-name" class="profile-name-card"></p>
+                <%if (err==1) { %>
+                <% include ../partials/loginerr-c %>
+                <% } %>
+                <form class="form-signin" action="/login" method="post">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email"
+                        required autofocus>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"
+                        required>
+                    <div id="remember" class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                </form>
+                <a href="#" class="forgot-password">
+                    Forgot the password?
+                </a>
+                <br>
+                <a href="signup.html" class="forgot-password">
+                    Don't have an account yet?!?!?! SignUp now!!!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
